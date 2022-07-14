@@ -48,6 +48,7 @@ void getop(char *token, stack_t **stack, unsigned int line)
 		{"mod", mod},
 		{"pchar", pchar},
 		{"pstr", pstr},
+		{"rotl", rotl},
 		{NULL, NULL}
 	};
 	for (i = 0; op[i].opcode != NULL; i++)

@@ -1,7 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#define _POSIX_C_SOURCE 200809L
+#define _GNU_SOURCE
+#define _XOPEN_SOURCE
 
 #include <stdio.h>
 #include <string.h>
@@ -64,5 +65,6 @@ void pchar(stack_t **stack, unsigned int line);
 void pstr(stack_t **stack, unsigned int line);
 
 void rotl(stack_t **stack, unsigned int line);
+void rotr(stack_t **stack, unsigned int line);
 
 #endif

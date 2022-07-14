@@ -25,10 +25,9 @@ void pchar(stack_t **stack, unsigned int line)
 		printf("L%d: can't pchar, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if (value < 0 || value > 127)
+	if (isascii(value))
 	{
 		printf("L%d: can't pchar, value out of range\n", line);
-		freestack(stack, line);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", value);
@@ -39,45 +38,68 @@ void pchar(stack_t **stack, unsigned int line)
  * @stack: stack to free
  * @line: current line number
  */
-void pstr(stack_t **stack, unsigned int line)
+void pstr(stack_t **stack, __attribute__((unused))unsigned int line)
 {
+	stack_t *temp;
+
 	if (stack == NULL || *stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty\n", line);
-		freestack(stack, line);
-		exit(EXIT_FAILURE);
+		printf("\n");
+		return;
 	}
-	while ((*stack)->n != 0)
+	temp = *stack;
+	while (temp != NULL && temp->n != 0 && isascii(temp->n))
 	{
-		if ((*stack)->n > 127)
-		{
-			freestack(stack, line);
-			break;
-		}
-		printf("%c", (*stack)->n);
-		*stack = (*stack)->next;
+		printf("%c", temp->n);
+		temp = temp->next;
 	}
 	printf("\n");
 }
 
 /**
  * rotl - rotates the stack to the top
+ * top element becomes last and second top becomes top
  * @stack: stack to free
  * @line: current line number
  */
-/*void rotl(stack_t **stack, unsigned int line)
+void rotl(stack_t **stack, __attribute__((unused))unsigned int line)
 {
 	stack_t *temp;
 
 	if (stack == NULL || *stack == NULL)
 	{
-		printf("L%d: can't pchar, stack empty\n", line);
-		freestack(stack, line);
-		exit(EXIT_FAILURE);
+		return;
 	}
-
 	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = *stack;
+	(*stack)->prev = temp;
 	*stack = (*stack)->next;
-
+	(*stack)->prev = NULL;
+	temp->next->next = NULL;
 }
-*/
+
+/**
+ * rotr - rotates the stack to the top
+ * last element becomes the top element
+ * @stack: stack to free
+ * @line: current line number
+ */
+void rotr(stack_t **stack, __attribute__((unused))unsigned int line)
+{
+	stack_t *temp;
+
+	if (stack == NULL || *stack == NULL)
+	{
+		return;
+	}
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = *stack;
+	temp->prev->next = NULL;
+	temp->prev = NULL;
+	(*stack)->prev = temp;
+	*stack = temp;
+}
