@@ -27,17 +27,12 @@ void swap(stack_t **stack, unsigned int line)
 }
 
 /**
- * add - adds the two top elements of the stack
+ * nop - does nothing
  * @stack: top of the stack
  * @line: line number
  */
-void add(stack_t **stack, unsigned int line)
+void nop(stack_t **stack, unsigned int line)
 {
-	stack_t *temp;
-
-	if (stack == NULL || *stack == NULL)
-	{
-		printf("L%d: can't swap, stack too short\n", line);
-		exit(EXIT_FAILURE);
-	}
+	(void)stack;
+	(void)line;
 }

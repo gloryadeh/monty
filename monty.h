@@ -1,6 +1,8 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -39,15 +41,28 @@ typedef struct instruction_s
 } instruction_t;
 
 int isnum(char *str);
+void nop(stack_t **stack, unsigned int line);
+void freestack(stack_t **stack, unsigned int line);
+
 void getop(char *token, stack_t **stack, unsigned int line);
 void readfile(const char *filename);
 void gettoken(char *str, stack_t **stack, unsigned int line);
-void push(stack_t **stack, unsigned int line);
-void pall(stack_t **stack, unsigned int line);
-void freestack(stack_t **stack, unsigned int line);
+
 void pop(stack_t **stack, unsigned int line);
 void pint(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
+void push(stack_t **stack, unsigned int line);
+void pall(stack_t **stack, unsigned int line);
+
 void add(stack_t **stack, unsigned int line);
+void sub(stack_t **stack, unsigned int line);
+void divide(stack_t **stack, unsigned int line);
+void mul(stack_t **stack, unsigned int line);
+void mod(stack_t **stack, unsigned int line);
+
+void pchar(stack_t **stack, unsigned int line);
+void pstr(stack_t **stack, unsigned int line);
+
+void rotl(stack_t **stack, unsigned int line);
 
 #endif
