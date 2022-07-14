@@ -93,20 +93,23 @@ void pint(stack_t **stack, unsigned int line)
 }
 
 /**
- * swap - swaps the two top elements of the stack
+ * swap - swaps top two elements of a stack
  * @stack: top of the stack
- * @line: line number
+ * @line_number: current line number
+ *
+ * Return: deleted node
  */
-void swap(stack_t **stack, unsigned int line)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
+/*	int val1, val2;*/
 
-	if (stack == NULL || *stack == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", line);
+		printf("L%d: can't swap, stack too short\n", line_number);
+		freestack(stack, line_number);
 		exit(EXIT_FAILURE);
 	}
-
 	temp = *stack;
 	*stack = (*stack)->next;
 	temp->prev = *stack;
@@ -116,4 +119,5 @@ void swap(stack_t **stack, unsigned int line)
 	if (temp->next != NULL)
 		temp->next->prev = temp;
 	value = (*stack)->n;
+
 }

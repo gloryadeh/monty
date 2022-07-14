@@ -25,7 +25,7 @@ void pchar(stack_t **stack, unsigned int line)
 		printf("L%d: can't pchar, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if (isascii(value))
+	if (!isascii(value))
 	{
 		printf("L%d: can't pchar, value out of range\n", line);
 		exit(EXIT_FAILURE);
