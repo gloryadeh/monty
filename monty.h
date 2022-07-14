@@ -48,6 +48,7 @@ void freestack(stack_t **stack);
 void getop(char *token, stack_t **stack, unsigned int line);
 void readfile(char *filename);
 void gettoken(char *str, stack_t **stack, unsigned int line);
+void stack_queue(char *token, stack_t **stack, unsigned int line);
 
 void pop(stack_t **stack, unsigned int line);
 void pint(stack_t **stack, unsigned int line);
