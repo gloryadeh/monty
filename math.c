@@ -12,7 +12,7 @@ void add(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -36,7 +36,7 @@ void sub(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't sub, stack too short\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -60,13 +60,13 @@ void divide(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't div, stack too short\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	if (value == 0)
 	{
 		printf("L%d: division by 0\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	top = value;
@@ -89,7 +89,7 @@ void mul(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't mul, stack too short\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -114,13 +114,13 @@ void mod(stack_t **stack, unsigned int line)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't div, stack too short\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	if (value == 0)
 	{
 		printf("L%d: division by 0\n", line);
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	top = value;

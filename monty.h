@@ -43,7 +43,7 @@ typedef struct instruction_s
 
 int isnum(char *str);
 void nop(stack_t **stack, unsigned int line);
-void freestack(stack_t **stack, unsigned int line);
+void freestack(stack_t **stack);
 
 void getop(char *token, stack_t **stack, unsigned int line);
 void readfile(const char *filename);

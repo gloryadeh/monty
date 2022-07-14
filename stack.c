@@ -5,7 +5,7 @@
  * @stack: top of the stack
  * @line: line number
  */
-void push(stack_t **stack, unsigned int line)
+void push(stack_t **stack, __attribute__((unused))unsigned int line)
 {
 	stack_t *top;
 
@@ -13,7 +13,7 @@ void push(stack_t **stack, unsigned int line)
 	if (top == NULL)
 	{
 		printf("Error: malloc failed\n");
-		freestack(stack, line);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	top->n = value;
@@ -101,7 +101,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%d: can't swap, stack too short\n", line_number);
-		freestack(stack, line_number);
+		freestack(stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;

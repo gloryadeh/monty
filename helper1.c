@@ -61,7 +61,7 @@ void getop(char *token, stack_t **stack, unsigned int line)
 		}
 	}
 	printf("L%d: unknown instruction %s\n", line, token);
-	freestack(stack, line);
+	freestack(stack);
 	exit(EXIT_FAILURE);
 }
 /**
@@ -87,7 +87,7 @@ void gettoken(char *str, stack_t **stack, unsigned int line)
 		if (!isnum(token))
 		{
 			printf("L%d: usage: push integer\n", line);
-			freestack(stack, line);
+			freestack(stack);
 			exit(EXIT_FAILURE);
 		}
 		value = atoi(token);
@@ -127,5 +127,5 @@ void readfile(const char *file)
 	fclose(fp);
 	free(buffer);
 	if (stack != NULL)
-		freestack(&stack, line);
+		freestack(&stack);
 }
