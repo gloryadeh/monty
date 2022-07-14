@@ -9,11 +9,6 @@ void push(stack_t **stack, unsigned int line)
 {
 	stack_t *top;
 
-	if (stack == NULL)
-	{
-		printf("L%d: invalid stack\n", line);
-		exit(EXIT_FAILURE);
-	}
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
@@ -34,14 +29,13 @@ void push(stack_t **stack, unsigned int line)
  * @stack: top of the stack
  * @line: line number
  */
-void pall(stack_t **stack, unsigned int line)
+void pall(stack_t **stack, __attribute__((unused))unsigned int line)
 {
 	stack_t *temp;
 
 	if (stack == NULL)
 	{
-		printf("L%d: invalid stack\n", line);
-		exit(EXIT_FAILURE);
+		return;
 	}
 	temp = *stack;
 	while (temp != NULL)
