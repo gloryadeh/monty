@@ -101,7 +101,7 @@ void gettoken(char *str, stack_t **stack, unsigned int line)
  * readfile - reads a text file
  * @file: file to be read
  */
-void readfile(const char *file)
+void readfile(char *file)
 {
 	FILE *fp;
 	char *buffer = NULL, *str;
