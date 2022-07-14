@@ -96,7 +96,7 @@ void pint(stack_t **stack, unsigned int line)
 void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
-/*	int val1, val2;*/
+	int val;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
@@ -105,13 +105,8 @@ void swap(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	temp = *stack;
-	*stack = (*stack)->next;
-	temp->prev = *stack;
-	temp->next = (*stack)->next;
-	(*stack)->prev = NULL;
-	(*stack)->next = temp;
-	if (temp->next != NULL)
-		temp->next->prev = temp;
-	value = (*stack)->n;
+	val = temp->next->n;
+	temp->next->n = temp->n;
+	temp->n = val;
 
 }
