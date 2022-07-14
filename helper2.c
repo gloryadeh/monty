@@ -95,7 +95,7 @@ void rotr(stack_t **stack, __attribute__((unused))unsigned int line)
 {
 	stack_t *temp;
 
-	if (stack == NULL || *stack == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 	{
 		return;
 	}

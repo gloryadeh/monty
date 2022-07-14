@@ -52,23 +52,16 @@ void pall(stack_t **stack, __attribute__((unused))unsigned int line)
  */
 void pop(stack_t **stack, unsigned int line)
 {
+	stack_t *temp;
+
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%d: can't pop an empty stack\n", line);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->next != NULL)
-	{
-		*stack = (*stack)->next;
-		value = (*stack)->n;
-		free((*stack)->prev);
-		(*stack)->prev = NULL;
-	}
-	else
-	{
-		free(*stack);
-		*stack = NULL;
-	}
+	temp = *stack;
+	*stack = (*stack)->next;
+	free(temp);
 }
 
 /**
