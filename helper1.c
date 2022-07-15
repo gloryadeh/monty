@@ -44,14 +44,6 @@ void getop(char *token, stack_t **stack, unsigned int line)
 		{"pstr", pstr}, {"rotl", rotl},
 		{"rotr", rotr}, {NULL, NULL}
 	};
-	for (i = 0; op[i].opcode != NULL; i++)
-	{
-		if (strcmp(token, op[i].opcode) == 0)
-		{
-			op[i].f(stack, line);
-			return;
-		}
-	}
 	if (strcmp(token, "queue") == 0)
 	{
 		data = 1;
@@ -66,6 +58,14 @@ void getop(char *token, stack_t **stack, unsigned int line)
 	{
 		queue_push(stack, line);
 		return;
+	}
+	for (i = 0; op[i].opcode != NULL; i++)
+	{
+		if (strcmp(token, op[i].opcode) == 0)
+		{
+			op[i].f(stack, line);
+			return;
+		}
 	}
 	printf("L%d: unknown instruction %s\n", line, token);
 	freestack(stack);
