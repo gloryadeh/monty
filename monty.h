@@ -55,6 +55,7 @@ void pint(stack_t **stack, unsigned int line);
 void swap(stack_t **stack, unsigned int line);
 void push(stack_t **stack, unsigned int line);
 void pall(stack_t **stack, unsigned int line);
+void queue_push(stack_t **stack, unsigned int line);
 
 void add(stack_t **stack, unsigned int line);
 void sub(stack_t **stack, unsigned int line);

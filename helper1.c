@@ -64,7 +64,7 @@ void getop(char *token, stack_t **stack, unsigned int line)
 	}
 	if (data == 1 && strcmp(token, "push") == 0)
 	{
-		qpush(stack, line);
+		queue_push(stack, line);
 		return;
 	}
 	printf("L%d: unknown instruction %s\n", line, token);

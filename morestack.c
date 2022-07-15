@@ -16,7 +16,7 @@ void nop(stack_t **stack, unsigned int line)
  * @stack: top of the stack
  * @line: line number
  */
-void qpush(stack_t **stack, unsigned int line)
+void queue_push(stack_t **stack, unsigned int line)
 {
 	stack_t *new;
 	stack_t *temp;
